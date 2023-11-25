@@ -12,6 +12,7 @@ module.exports = {
       "./app/views/**/**/*.slim",
       "./app/views/**/**/*/*.slim",
       "./node_modules/@bigbinary/neetoui/**/*",
+      "./node_modules/@bigbinary/neeto-commons-frontend/**/*.js",
     ],
     defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
   },

@@ -11,3 +11,7 @@ export const FEATURE_LIST = [
   "Performs background job processing 'inline' for heroku env. It means heroku can deliver emails.",
   "Letter opener gem for development.",
 ];
+
+export const SINGULAR = { count: 1 };
+
+export const PLURAL = { count: 2 };
