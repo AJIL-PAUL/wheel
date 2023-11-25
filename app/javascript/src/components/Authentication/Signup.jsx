@@ -6,7 +6,7 @@ import { Input } from "neetoui/formik";
 import PropTypes from "prop-types";
 
 import authenticationApi from "apis/authentication";
-import { LOGIN_PATH } from "components/routeConstants";
+import routes from "routes";
 
 import {
   SIGNUP_FORM_INITIAL_VALUES,
@@ -17,7 +17,7 @@ const Signup = ({ history }) => {
   const handleSubmit = async formData => {
     try {
       await authenticationApi.signup(formData);
-      history.push(LOGIN_PATH);
+      history.push(routes.auth.login);
     } catch (error) {
       logger.error(error);
     }
@@ -87,7 +87,12 @@ const Signup = ({ history }) => {
           <p className="neeto-ui-text-gray-600 font-normal">
             Already have an account?
           </p>
-          <Button label="Login" size="small" style="link" to={LOGIN_PATH} />
+          <Button
+            label="Login"
+            size="small"
+            style="link"
+            to={routes.auth.login}
+          />
         </div>
       </div>
     </div>

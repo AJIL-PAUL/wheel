@@ -6,9 +6,9 @@ import { Input } from "neetoui/formik";
 import { Container, Header } from "neetoui/layouts";
 
 import profilesApi from "apis/profiles";
-import { LOGIN_PATH } from "components/routeConstants";
 import { useAuthDispatch } from "contexts/auth";
 import { useUserState } from "contexts/user";
+import routes from "routes";
 
 import ConfirmPasswordFormModal from "./ConfirmPasswordFormModal";
 import { EMAIL_FORM_VALIDATION_SCHEMA } from "./constants";
@@ -32,7 +32,7 @@ const Email = () => {
         password: formikPasswordContext.password,
       });
       authDispatch({ type: "LOGOUT" });
-      window.location.href = LOGIN_PATH;
+      window.location.href = routes.auth.login;
     } catch (err) {
       resetForm();
       formikPasswordContext.setShowPasswordModal(false);
