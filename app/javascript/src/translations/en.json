@@ -1,7 +1,10 @@
 {
   "titles": {
+    "notes": "Notes"
+  },
+  "label": {
     "notes_one": "note",
-    "notes_other": "Notes"
+    "notes_other": "notes"
   },
   "actions": {
     "addNew": "Add new {{what}}",

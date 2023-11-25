@@ -9,7 +9,7 @@ import { filter } from "ramda";
 import { useTranslation } from "react-i18next";
 
 import EmptyState from "components/commons/EmptyState";
-import { PLURAL, SINGULAR } from "components/constants";
+import { SINGULAR } from "components/constants";
 import { useDebounce } from "neetocommons/react-utils";
 
 import { INITIAL_NOTE_LIST } from "./constants";
@@ -31,12 +31,12 @@ const Notes = () => {
   return (
     <Container>
       <Header
-        title={t("titles.notes", PLURAL)}
+        title={t("titles.notes")}
         actionBlock={
           <Button
             icon={Plus}
             label={t("actions.addNew", {
-              what: t("titles.notes", SINGULAR),
+              what: t("label.notes", SINGULAR),
             })}
           />
         }
@@ -54,7 +54,7 @@ const Notes = () => {
           subtitle={t("messages.addYourNotes")}
           title={t("messages.emptyNotes")}
           primaryActionLabel={t("actions.addNew", {
-            what: t("titles.notes", SINGULAR),
+            what: t("label.notes", SINGULAR),
           })}
         />
       )}
