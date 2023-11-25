@@ -2,16 +2,28 @@
   "titles": {
     "notes": "Notes"
   },
-  "label": {
-    "notes_one": "note",
-    "notes_other": "notes"
+  "labels": {
+    "notes_one": "Note",
+    "notes_other": "Notes",
+    "title": "Title",
+    "description": "Description",
+    "assignedContact": "Assigned contact",
+    "tags": "Tags",
+    "tag": "Tag"
   },
   "actions": {
     "addNew": "Add new {{what}}",
-    "clear": "Clear"
+    "clear": "Clear",
+    "saveChanges": "Save Changes",
+    "cancel": "Cancel"
   },
   "messages": {
     "addYourNotes": "Add your notes to send customized emails to them.",
-    "emptyNotes": "Looks like you don't have any notes!"
+    "emptyNotes": "Looks like you don't have any notes!",
+    "addedSuccessfully": "{{what}} added successfully."
+  },
+  "validations": {
+    "required": "{{what}} is required.",
+    "atLeastOne": "At least one {{what}} is required."
   }
 }

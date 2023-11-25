@@ -17,6 +17,7 @@ export const STATUS = {
 
 export const INITIAL_NOTE_LIST = [
   {
+    id: 1,
     title: "How to Add Items to Your Shopping Cart",
     description: `Adding items to your shopping cart is a fundamental step towards a seamless shopping experience.
       To add an item, navigate through our extensive collection and locate the product you desire. Once you've found
@@ -34,6 +35,7 @@ export const INITIAL_NOTE_LIST = [
     status: STATUS.CREATED,
   },
   {
+    id: 2,
     title: "Managing Your Shopping Cart Items",
     description:
       "Discover how to view, edit, or remove items from your shopping cart to streamline your shopping experience. ",
@@ -43,6 +45,7 @@ export const INITIAL_NOTE_LIST = [
     status: STATUS.DRAFTED,
   },
   {
+    id: 3,
     title: "Navigating Through Checkout Process",
     description:
       "Learn about the steps involved in the checkout process and how to complete your purchase securely.",
@@ -52,6 +55,7 @@ export const INITIAL_NOTE_LIST = [
     status: STATUS.CREATED,
   },
   {
+    id: 4,
     title: "Applying Discount Codes",
     description:
       "Find out how to apply discount codes or coupons to your shopping cart to avail exciting offers and discounts.",
@@ -61,6 +65,7 @@ export const INITIAL_NOTE_LIST = [
     status: STATUS.DRAFTED,
   },
   {
+    id: 5,
     title: "Understanding Product Categories",
     description:
       "Explore different product tags available on our platform to easily find the items you need.",

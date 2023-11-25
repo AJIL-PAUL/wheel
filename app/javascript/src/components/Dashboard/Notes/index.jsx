@@ -14,13 +14,15 @@ import { useDebounce } from "neetocommons/react-utils";
 
 import { INITIAL_NOTE_LIST } from "./constants";
 import NoteList from "./List";
+import CreateNotePane from "./Pane/Create";
 
 const Notes = () => {
   const { t } = useTranslation();
 
+  const [isCreateNotePaneOpen, setIsCreateNotePaneOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [notes, setNotes] = useState(INITIAL_NOTE_LIST);
 
-  const notes = INITIAL_NOTE_LIST;
   const debouncedSearchTerm = useDebounce(searchTerm).toLowerCase().trim();
 
   const filteredNotes = filter(
@@ -29,15 +31,16 @@ const Notes = () => {
   );
 
   return (
-    <Container>
+    <Container isHeaderFixed>
       <Header
         title={t("titles.notes")}
         actionBlock={
           <Button
             icon={Plus}
             label={t("actions.addNew", {
-              what: t("label.notes", SINGULAR),
+              what: t("labels.notes", SINGULAR).toLocaleLowerCase(),
             })}
+            onClick={() => setIsCreateNotePaneOpen(true)}
           />
         }
         searchProps={{
@@ -54,10 +57,15 @@ const Notes = () => {
           subtitle={t("messages.addYourNotes")}
           title={t("messages.emptyNotes")}
           primaryActionLabel={t("actions.addNew", {
-            what: t("label.notes", SINGULAR),
+            what: t("labels.notes", SINGULAR).toLocaleLowerCase(),
           })}
         />
       )}
+      <CreateNotePane
+        isOpen={isCreateNotePaneOpen}
+        setNotes={setNotes}
+        onClose={() => setIsCreateNotePaneOpen(false)}
+      />
     </Container>
   );
 };
