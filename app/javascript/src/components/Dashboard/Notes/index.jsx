@@ -2,17 +2,17 @@ import React, { useState } from "react";
 
 import EmptyNotesListImage from "images/EmptyNotesList";
 import { isNotEmpty } from "neetocist";
-import { Plus } from "neetoicons";
-import { Button } from "neetoui";
-import { Container, Header } from "neetoui/layouts";
+import { Container } from "neetoui/layouts";
 import { filter } from "ramda";
 import { useTranslation } from "react-i18next";
 
 import EmptyState from "components/commons/EmptyState";
 import { SINGULAR } from "components/constants";
-import { useDebounce } from "neetocommons/react-utils";
+import { useSearchTerm } from "hooks/useSearchTerm";
 
 import { INITIAL_NOTE_LIST } from "./constants";
+import DeleteNoteAlert from "./Delete";
+import Header from "./Header";
 import NoteList from "./List";
 import CreateNotePane from "./Pane/Create";
 
@@ -20,40 +20,42 @@ const Notes = () => {
   const { t } = useTranslation();
 
   const [isCreateNotePaneOpen, setIsCreateNotePaneOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false);
+  const [selectedNote, setSelectedNote] = useState({});
+
+  const { searchTerm, searchProps } = useSearchTerm();
   const [notes, setNotes] = useState(INITIAL_NOTE_LIST);
 
-  const debouncedSearchTerm = useDebounce(searchTerm).toLowerCase().trim();
-
   const filteredNotes = filter(
-    ({ title }) => title.toLowerCase().includes(debouncedSearchTerm),
+    ({ title }) => title.toLowerCase().includes(searchTerm),
     notes
   );
+
+  const handleClickDeleteNote = note => {
+    setIsDeleteAlertOpen(true);
+    setSelectedNote(note);
+  };
+
+  const handleCloseDeleteAlert = () => {
+    setIsDeleteAlertOpen(false);
+    setSelectedNote({});
+  };
 
   return (
     <Container isHeaderFixed>
       <Header
-        title={t("titles.notes")}
-        actionBlock={
-          <Button
-            icon={Plus}
-            label={t("actions.addNew", {
-              what: t("labels.notes", SINGULAR).toLocaleLowerCase(),
-            })}
-            onClick={() => setIsCreateNotePaneOpen(true)}
-          />
-        }
-        searchProps={{
-          value: searchTerm,
-          onChange: ({ target }) => setSearchTerm(target.value),
-        }}
+        searchProps={searchProps}
+        setIsCreateNotePaneOpen={setIsCreateNotePaneOpen}
       />
       {isNotEmpty(filteredNotes) ? (
-        <NoteList notes={filteredNotes} />
+        <NoteList
+          handleDeleteNote={handleClickDeleteNote}
+          notes={filteredNotes}
+        />
       ) : (
         <EmptyState
           image={<EmptyNotesListImage />}
-          primaryAction={() => {}}
+          primaryAction={() => setIsCreateNotePaneOpen(true)}
           subtitle={t("messages.addYourNotes")}
           title={t("messages.emptyNotes")}
           primaryActionLabel={t("actions.addNew", {
@@ -65,6 +67,12 @@ const Notes = () => {
         isOpen={isCreateNotePaneOpen}
         setNotes={setNotes}
         onClose={() => setIsCreateNotePaneOpen(false)}
+      />
+      <DeleteNoteAlert
+        isOpen={isDeleteAlertOpen}
+        selectedNote={selectedNote}
+        setNotes={setNotes}
+        onClose={handleCloseDeleteAlert}
       />
     </Container>
   );

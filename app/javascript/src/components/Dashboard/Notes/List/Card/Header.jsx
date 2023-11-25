@@ -2,10 +2,18 @@ import React from "react";
 
 import { Typography } from "neetoui";
 
-const CardHeader = ({ title }) => (
+import { withT } from "neetocommons/react-utils";
+import MoreDropdown from "neetomolecules/MoreDropdown";
+
+const CardHeader = withT(({ t, title, handleDeleteNote }) => (
   <div className="flex w-full items-start justify-between">
     <Typography style="h4">{title}</Typography>
+    <MoreDropdown
+      menuItems={[
+        { key: 1, label: t("actions.delete"), onClick: handleDeleteNote },
+      ]}
+    />
   </div>
-);
+));
 
 export default CardHeader;

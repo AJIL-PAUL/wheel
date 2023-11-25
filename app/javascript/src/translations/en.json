@@ -15,15 +15,23 @@
     "addNew": "Add new {{what}}",
     "clear": "Clear",
     "saveChanges": "Save Changes",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "delete": "Delete"
   },
   "messages": {
     "addYourNotes": "Add your notes to send customized emails to them.",
     "emptyNotes": "Looks like you don't have any notes!",
-    "addedSuccessfully": "{{what}} added successfully."
+    "addedSuccessfully": "{{what}} added successfully.",
+    "deletedSuccessfully": "{{what}} deleted successfully."
   },
   "validations": {
     "required": "{{what}} is required.",
     "atLeastOne": "At least one {{what}} is required."
+  },
+  "alerts": {
+    "delete": {
+      "title": "Delete {{what}}?",
+      "message": "You are permanently deleting the {{entity}} <strong>{{what}}</strong>. This can't be undone."
+    }
   }
 }
