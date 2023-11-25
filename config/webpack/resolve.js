@@ -19,6 +19,7 @@ module.exports = {
     neetocommons: "@bigbinary/neeto-commons-frontend",
     neetocist: "@bigbinary/neeto-cist",
     utils: absolutePath("src/utils"),
+    hooks: absolutePath("src/hooks"),
   },
   extensions: [
     ".ts",

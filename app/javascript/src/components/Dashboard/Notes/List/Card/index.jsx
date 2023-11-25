@@ -4,12 +4,15 @@ import CardBody from "./Body";
 import CardFooter from "./Footer";
 import CardHeader from "./Header";
 
-const Card = ({ note }) => {
+const Card = ({ note, handleDeleteNote }) => {
   const { title, description, tags, updatedAt, assignedContact, status } = note;
 
   return (
     <div className="neeto-ui-border-gray-300 neeto-ui-shadow-xs border p-4">
-      <CardHeader title={title} />
+      <CardHeader
+        handleDeleteNote={() => handleDeleteNote(note)}
+        title={title}
+      />
       <CardBody description={description} />
       <CardFooter
         assignedContact={assignedContact}
