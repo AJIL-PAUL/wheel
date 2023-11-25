@@ -11,7 +11,14 @@
       "neetoui/*": ["../../../node_modules/@bigbinary/neetoui/*"],
       "neetoui": ["../../../node_modules/@bigbinary/neetoui"],
       "neetoicons/*": ["../../../node_modules/@bigbinary/neeto-icons/*"],
-      "neetoicons": ["../../../node_modules/@bigbinary/neeto-icons"]
+      "neetoicons": ["../../../node_modules/@bigbinary/neeto-icons"],
+      "neetocommons": [
+        "../../../node_modules/@bigbinary/neeto-commons-frontend"
+      ],
+      "neetomolecules/*": [
+        "../../../node_modules/@bigbinary/neeto-molecules/*"
+      ],
+      "lib": "src/lib"
     },
     "pretty": true,
     "experimentalDecorators": true,

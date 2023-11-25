@@ -1,0 +1,14 @@
+{
+  "titles": {
+    "notes_one": "note",
+    "notes_other": "Notes"
+  },
+  "actions": {
+    "addNew": "Add new {{what}}",
+    "clear": "Clear"
+  },
+  "messages": {
+    "addYourNotes": "Add your notes to send customized emails to them.",
+    "emptyNotes": "Looks like you don't have any notes!"
+  }
+}

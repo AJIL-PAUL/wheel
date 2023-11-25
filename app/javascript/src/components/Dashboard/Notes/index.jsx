@@ -1,105 +1,61 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import EmptyNotesListImage from "images/EmptyNotesList";
-import { Delete } from "neetoicons";
-import { Button, PageLoader } from "neetoui";
-import { Container, Header, SubHeader } from "neetoui/layouts";
+import { Plus } from "neetoicons";
+import { Button } from "neetoui";
+import { Container, Header } from "neetoui/layouts";
+import { filter, isEmpty } from "ramda";
+import { useTranslation } from "react-i18next";
 
-import notesApi from "apis/notes";
 import EmptyState from "components/commons/EmptyState";
+import { PLURAL, SINGULAR } from "components/constants";
+import { useDebounce } from "neetocommons/react-utils";
 
-import DeleteAlert from "./DeleteAlert";
-import NewNotePane from "./Pane/Create";
-import Table from "./Table";
+import { INITIAL_NOTE_LIST } from "./constants";
+import NoteList from "./List";
 
 const Notes = () => {
-  const [loading, setLoading] = useState(true);
-  const [showNewNotePane, setShowNewNotePane] = useState(false);
-  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+  const { t } = useTranslation();
+
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedNoteIds, setSelectedNoteIds] = useState([]);
-  const [notes, setNotes] = useState([]);
 
-  useEffect(() => {
-    fetchNotes();
-  }, []);
+  const notes = INITIAL_NOTE_LIST;
+  const debouncedSearchTerm = useDebounce(searchTerm).toLowerCase().trim();
 
-  const fetchNotes = async () => {
-    try {
-      setLoading(true);
-      const {
-        data: { notes },
-      } = await notesApi.fetch();
-      setNotes(notes);
-    } catch (error) {
-      logger.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  if (loading) {
-    return <PageLoader />;
-  }
+  const filteredNotes = filter(
+    ({ title }) => title.toLowerCase().includes(debouncedSearchTerm),
+    notes
+  );
 
   return (
     <Container>
       <Header
-        title="Notes"
+        title={t("titles.notes", PLURAL)}
         actionBlock={
           <Button
-            icon="ri-add-line"
-            label="Add new note"
-            size="small"
-            onClick={() => setShowNewNotePane(true)}
+            icon={Plus}
+            label={t("actions.addNew", {
+              what: t("titles.notes", SINGULAR),
+            })}
           />
         }
         searchProps={{
           value: searchTerm,
-          onChange: e => setSearchTerm(e.target.value),
+          onChange: ({ target }) => setSearchTerm(target.value),
         }}
       />
-      {notes.length ? (
-        <>
-          <SubHeader
-            rightActionBlock={
-              <Button
-                disabled={!selectedNoteIds.length}
-                icon={Delete}
-                label="Delete"
-                size="small"
-                onClick={() => setShowDeleteAlert(true)}
-              />
-            }
-          />
-          <Table
-            fetchNotes={fetchNotes}
-            notes={notes}
-            selectedNoteIds={selectedNoteIds}
-            setSelectedNoteIds={setSelectedNoteIds}
-          />
-        </>
-      ) : (
+      {isEmpty(filteredNotes) ? (
         <EmptyState
           image={<EmptyNotesListImage />}
-          primaryAction={() => setShowNewNotePane(true)}
-          primaryActionLabel="Add new note"
-          subtitle="Add your notes to send customized emails to them."
-          title="Looks like you don't have any notes!"
+          primaryAction={() => {}}
+          subtitle={t("messages.addYourNotes")}
+          title={t("messages.emptyNotes")}
+          primaryActionLabel={t("actions.addNew", {
+            what: t("titles.notes", SINGULAR),
+          })}
         />
-      )}
-      <NewNotePane
-        fetchNotes={fetchNotes}
-        setShowPane={setShowNewNotePane}
-        showPane={showNewNotePane}
-      />
-      {showDeleteAlert && (
-        <DeleteAlert
-          refetch={fetchNotes}
-          selectedNoteIds={selectedNoteIds}
-          setSelectedNoteIds={setSelectedNoteIds}
-          onClose={() => setShowDeleteAlert(false)}
-        />
+      ) : (
+        <NoteList notes={filteredNotes} />
       )}
     </Container>
   );
