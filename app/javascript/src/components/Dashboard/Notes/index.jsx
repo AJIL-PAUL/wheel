@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 
 import EmptyNotesListImage from "images/EmptyNotesList";
+import { isNotEmpty } from "neetocist";
 import { Plus } from "neetoicons";
 import { Button } from "neetoui";
 import { Container, Header } from "neetoui/layouts";
-import { filter, isEmpty } from "ramda";
+import { filter } from "ramda";
 import { useTranslation } from "react-i18next";
 
 import EmptyState from "components/commons/EmptyState";
@@ -44,7 +45,9 @@ const Notes = () => {
           onChange: ({ target }) => setSearchTerm(target.value),
         }}
       />
-      {isEmpty(filteredNotes) ? (
+      {isNotEmpty(filteredNotes) ? (
+        <NoteList notes={filteredNotes} />
+      ) : (
         <EmptyState
           image={<EmptyNotesListImage />}
           primaryAction={() => {}}
@@ -54,8 +57,6 @@ const Notes = () => {
             what: t("titles.notes", SINGULAR),
           })}
         />
-      ) : (
-        <NoteList notes={filteredNotes} />
       )}
     </Container>
   );

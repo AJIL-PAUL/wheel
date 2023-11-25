@@ -18,6 +18,7 @@
       "neetomolecules/*": [
         "../../../node_modules/@bigbinary/neeto-molecules/*"
       ],
+      "neetocist": ["../../../node_modules/@bigbinary/neeto-cist"],
       "lib": "src/lib"
     },
     "pretty": true,
