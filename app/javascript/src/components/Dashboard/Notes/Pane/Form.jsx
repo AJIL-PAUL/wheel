@@ -38,34 +38,28 @@ const Form = ({ initialValues, handleSubmit, onCancel }) => {
     >
       {({ isSubmitting }) => (
         <FormikForm className="w-full">
-          <Pane.Body className="space-y-6">
-            <Input
-              required
-              className="w-full flex-grow-0"
-              label={t("labels.title")}
-              name="title"
-            />
-            <Textarea
-              required
-              className="w-full flex-grow-0"
-              label={t("labels.description")}
-              name="description"
-            />
-            <Select
-              required
-              className="w-full flex-grow-0"
-              label={t("labels.assignedContact")}
-              name="assignedContact"
-              options={contactOptions}
-            />
-            <Select
-              isMulti
-              required
-              className="w-full flex-grow-0"
-              label={t("labels.tags")}
-              name="tags"
-              options={tagOptions}
-            />
+          <Pane.Body>
+            <div className="w-full space-y-6">
+              <Input required label={t("labels.title")} name="title" />
+              <Textarea
+                required
+                label={t("labels.description")}
+                name="description"
+              />
+              <Select
+                required
+                label={t("labels.assignedContact")}
+                name="assignedContact"
+                options={contactOptions}
+              />
+              <Select
+                isMulti
+                required
+                label={t("labels.tags")}
+                name="tags"
+                options={tagOptions}
+              />
+            </div>
           </Pane.Body>
           <Pane.Footer className="gap-x-2">
             <Button
