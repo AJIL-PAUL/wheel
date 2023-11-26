@@ -1,5 +1,7 @@
 import React from "react";
 
+import { t } from "i18next";
+
 import { dateFormat } from "neetocommons/utils";
 
 import NameAndRole from "./NameAndRole";
@@ -9,10 +11,14 @@ export const getColumnData = () => [
   {
     dataIndex: "name",
     render: (_, contact) => <NameAndRole contact={contact} />,
-    title: "Name & Role",
+    title: t("titles.nameAndRole"),
   },
-  { dataIndex: "email", title: "Email" },
-  { dataIndex: "createdAt", title: "Created At", render: dateFormat.date },
+  { dataIndex: "email", title: t("titles.email") },
+  {
+    dataIndex: "createdAt",
+    title: t("titles.createdAt"),
+    render: dateFormat.date,
+  },
   {
     dataIndex: "actions",
     render: (_, contact) => <RowAction contact={contact} />,

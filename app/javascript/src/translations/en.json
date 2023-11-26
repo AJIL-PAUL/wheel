@@ -2,7 +2,10 @@
   "titles": {
     "notes": "Notes",
     "contacts": "Contacts",
-    "settings": "Settings"
+    "settings": "Settings",
+    "nameAndRole": "Name & Role",
+    "email": "Email",
+    "createdAt": "Created at"
   },
   "labels": {
     "note_one": "Note",
@@ -25,9 +28,7 @@
   "messages": {
     "addedSuccessfully": "{{what}} added successfully.",
     "deletedSuccessfully": "{{what}} deleted successfully.",
-    "noEntities": "There are no {{entity}} to show",
-    "addYourNotes": "Add your notes to send customized emails to them.",
-    "emptyNotes": "Looks like you don't have any notes!"
+    "noEntities": "There are no {{entity}} to show"
   },
   "validations": {
     "required": "{{what}} is required.",
