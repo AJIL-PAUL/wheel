@@ -3,8 +3,7 @@ import React from "react";
 import { removeById } from "neetocist";
 import { Alert, Toastr } from "neetoui";
 import { Trans, useTranslation } from "react-i18next";
-
-import { SINGULAR } from "components/constants";
+import { SINGULAR } from "src/constants";
 
 const DeleteNoteAlert = ({ isOpen, selectedNote, onClose, setNotes }) => {
   const { title } = selectedNote;

@@ -3,9 +3,8 @@ import React from "react";
 import { noop } from "neetocist";
 import { Pane, Toastr, Typography } from "neetoui";
 import { useTranslation } from "react-i18next";
+import { SINGULAR } from "src/constants";
 import { v4 as uuid } from "uuid";
-
-import { SINGULAR } from "components/constants";
 
 import { INITIAL_FORM_VALUES } from "./constants";
 import Form from "./Form";
