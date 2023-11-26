@@ -9,14 +9,14 @@ import { v4 as uuid } from "uuid";
 import { INITIAL_FORM_VALUES } from "./constants";
 import Form from "./Form";
 
-const CreateNotePane = ({ isOpen, onClose = noop, setNotes }) => {
+const CreateContactPane = ({ isOpen, onClose = noop, setContacts = noop }) => {
   const { t } = useTranslation();
 
-  const addNote = values => {
+  const addContact = values => {
     const payload = { id: uuid(), createdAt: new Date(), ...values };
-    setNotes(prevNotes => [payload, ...prevNotes]);
+    setContacts(prevContacts => [payload, ...prevContacts]);
     Toastr.success(
-      t("messages.addedSuccessfully", { what: t("labels.note", SINGULAR) })
+      t("messages.addedSuccessfully", { what: t("labels.contact", SINGULAR) })
     );
     onClose();
   };
@@ -26,12 +26,12 @@ const CreateNotePane = ({ isOpen, onClose = noop, setNotes }) => {
       <Pane.Header>
         <Typography style="h2" weight="semibold">
           {t("actions.addNew", {
-            what: t("labels.note", SINGULAR).toLocaleLowerCase(),
+            what: t("labels.contact", SINGULAR).toLocaleLowerCase(),
           })}
         </Typography>
       </Pane.Header>
       <Form
-        handleSubmit={addNote}
+        handleSubmit={addContact}
         initialValues={INITIAL_FORM_VALUES}
         onCancel={onClose}
       />
@@ -39,4 +39,4 @@ const CreateNotePane = ({ isOpen, onClose = noop, setNotes }) => {
   );
 };
 
-export default CreateNotePane;
+export default CreateContactPane;

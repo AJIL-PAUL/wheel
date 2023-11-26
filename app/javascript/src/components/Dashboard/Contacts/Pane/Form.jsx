@@ -2,32 +2,24 @@ import React from "react";
 
 import { Formik, Form as FormikForm } from "formik";
 import { Button, Pane } from "neetoui";
-import { Input, Select, Textarea } from "neetoui/formik";
+import { Input, Select } from "neetoui/formik";
 import { useTranslation } from "react-i18next";
 import { modifyKeys } from "utils";
 
 import { VALIDATION_SCHEMA } from "./constants";
 
-import { CONTACTS, TAGS } from "../constants";
+import { ROLES } from "../constants";
 
 const Form = ({ initialValues, handleSubmit, onCancel }) => {
   const { t } = useTranslation();
 
   const handleFormSubmit = async values => {
-    const { assignedContact, tags, ...rest } = values;
-    const payload = {
-      ...rest,
-      assignedContact: {
-        id: assignedContact.value,
-        name: assignedContact.label,
-      },
-      tags: modifyKeys({ value: "id" }, tags),
-    };
+    const { role, ...rest } = values;
+    const payload = { ...rest, role: { id: role.value, name: role.label } };
     handleSubmit(payload);
   };
 
-  const contactOptions = modifyKeys({ name: "label", id: "value" }, CONTACTS);
-  const tagOptions = modifyKeys({ id: "value" }, TAGS);
+  const roleOptions = modifyKeys({ id: "value", name: "label" }, ROLES);
 
   return (
     <Formik
@@ -40,24 +32,20 @@ const Form = ({ initialValues, handleSubmit, onCancel }) => {
         <FormikForm className="w-full">
           <Pane.Body>
             <div className="w-full space-y-6">
-              <Input required label={t("labels.title")} name="title" />
-              <Textarea
-                required
-                label={t("labels.description")}
-                name="description"
-              />
+              <div className="flex gap-x-2">
+                <Input
+                  required
+                  label={t("labels.firstName")}
+                  name="firstName"
+                />
+                <Input required label={t("labels.lastName")} name="lastName" />
+              </div>
+              <Input required label={t("labels.email")} name="email" />
               <Select
                 required
-                label={t("labels.assignedContact")}
-                name="assignedContact"
-                options={contactOptions}
-              />
-              <Select
-                isMulti
-                required
-                label={t("labels.tags")}
-                name="tags"
-                options={tagOptions}
+                label={t("labels.role")}
+                name="role"
+                options={roleOptions}
               />
             </div>
           </Pane.Body>

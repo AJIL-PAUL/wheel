@@ -26,6 +26,8 @@ const Notes = () => {
     notes
   );
 
+  const handleClickAddNote = () => setIsCreateNotePaneOpen(true);
+
   const handleClickDeleteNote = note => {
     setIsDeleteAlertOpen(true);
     setSelectedNote(note);
@@ -38,10 +40,7 @@ const Notes = () => {
 
   return (
     <Container isHeaderFixed>
-      <Header
-        searchProps={searchProps}
-        setIsCreateNotePaneOpen={setIsCreateNotePaneOpen}
-      />
+      <Header searchProps={searchProps} onClickAddNote={handleClickAddNote} />
       {isNotEmpty(filteredNotes) ? (
         <NoteList
           handleDeleteNote={handleClickDeleteNote}
@@ -50,7 +49,7 @@ const Notes = () => {
       ) : (
         <NoData
           entityTranslationKey="labels.note"
-          onClick={() => setIsCreateNotePaneOpen(true)}
+          onClick={handleClickAddNote}
         />
       )}
       <CreateNotePane

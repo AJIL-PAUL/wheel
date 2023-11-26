@@ -2,8 +2,8 @@ import React from "react";
 
 import { noop } from "neetocist";
 import { Table as NeetoUITable } from "neetoui";
+import { DEFAULT_PAGE_SIZE } from "src/constants";
 
-import { DEFAULT_PAGE_SIZE } from "components/constants";
 import TableWrapper from "neetomolecules/TableWrapper";
 
 import { getColumnData } from "./utils";

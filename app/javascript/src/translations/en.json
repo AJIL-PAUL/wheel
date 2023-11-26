@@ -8,10 +8,14 @@
     "createdAt": "Created at"
   },
   "labels": {
+    "email": "Email address",
+    "firstName": "First name",
+    "lastName": "Last name",
     "note_one": "Note",
     "note_other": "Notes",
     "contact_one": "Contact",
     "contact_other": "Contacts",
+    "role": "Role",
     "title": "Title",
     "description": "Description",
     "assignedContact": "Assigned contact",
@@ -32,7 +36,8 @@
   },
   "validations": {
     "required": "{{what}} is required.",
-    "atLeastOne": "At least one {{what}} is required."
+    "atLeastOne": "At least one {{what}} is required.",
+    "invalid": "{{what}} is invalid."
   },
   "alerts": {
     "delete": {
