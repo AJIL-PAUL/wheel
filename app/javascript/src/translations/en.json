@@ -1,10 +1,14 @@
 {
   "titles": {
-    "notes": "Notes"
+    "notes": "Notes",
+    "contacts": "Contacts",
+    "settings": "Settings"
   },
   "labels": {
-    "notes_one": "Note",
-    "notes_other": "Notes",
+    "note_one": "Note",
+    "note_other": "Notes",
+    "contact_one": "Contact",
+    "contact_other": "Contacts",
     "title": "Title",
     "description": "Description",
     "assignedContact": "Assigned contact",
@@ -19,10 +23,11 @@
     "delete": "Delete"
   },
   "messages": {
-    "addYourNotes": "Add your notes to send customized emails to them.",
-    "emptyNotes": "Looks like you don't have any notes!",
     "addedSuccessfully": "{{what}} added successfully.",
-    "deletedSuccessfully": "{{what}} deleted successfully."
+    "deletedSuccessfully": "{{what}} deleted successfully.",
+    "noEntities": "There are no {{entity}} to show",
+    "addYourNotes": "Add your notes to send customized emails to them.",
+    "emptyNotes": "Looks like you don't have any notes!"
   },
   "validations": {
     "required": "{{what}} is required.",

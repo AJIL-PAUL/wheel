@@ -10,6 +10,7 @@ const routes = {
   profile: "/my/profile",
   settings: {
     index: "/settings",
+    changePassword: "/settings?tab=password",
   },
 };
 
