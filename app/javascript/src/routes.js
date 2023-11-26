@@ -7,10 +7,10 @@ const routes = {
   },
   contacts: "/contacts",
   notes: "/notes",
-  profile: "/my/profile",
   settings: {
     index: "/settings",
     changePassword: "/settings?tab=password",
+    profile: "/settings?tab=profile",
   },
 };
 

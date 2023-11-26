@@ -1,5 +1,5 @@
 import { t } from "i18next";
-import { ContactBook, Notes, Settings } from "neetoicons";
+import { UserCircle, Notes, Settings } from "neetoicons";
 
 import routes from "routes";
 
@@ -18,7 +18,7 @@ export const SIDENAV_LINKS = [
   {
     label: t("titles.contacts"),
     to: routes.contacts,
-    icon: ContactBook,
+    icon: UserCircle,
   },
   {
     label: t("titles.settings"),
