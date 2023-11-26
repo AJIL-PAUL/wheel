@@ -8,7 +8,7 @@
     "createdAt": "Created at"
   },
   "labels": {
-    "email": "Email",
+    "email": "Email address",
     "firstName": "First name",
     "lastName": "Last name",
     "note_one": "Note",
