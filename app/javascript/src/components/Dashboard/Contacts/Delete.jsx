@@ -5,14 +5,20 @@ import { Alert, Toastr } from "neetoui";
 import { Trans, useTranslation } from "react-i18next";
 import { SINGULAR } from "src/constants";
 
-const DeleteNoteAlert = ({ isOpen, selectedNote, onClose, setNotes }) => {
-  const { title } = selectedNote;
+const DeleteContactAlert = ({
+  isOpen,
+  selectedContact,
+  onClose,
+  setContacts,
+}) => {
+  const { firstName, lastName } = selectedContact;
+  const contactName = `${firstName} ${lastName}`;
   const { t } = useTranslation();
 
-  const entityName = t("labels.note", SINGULAR);
+  const entityName = t("labels.contact", SINGULAR);
 
-  const handleDeleteNote = () => {
-    setNotes(prevNotes => removeById(selectedNote.id, prevNotes));
+  const handleDeleteContact = () => {
+    setContacts(prevContacts => removeById(selectedContact.id, prevContacts));
     Toastr.success(t("messages.deletedSuccessfully", { what: entityName }));
     onClose();
   };
@@ -27,13 +33,13 @@ const DeleteNoteAlert = ({ isOpen, selectedNote, onClose, setNotes }) => {
           components={{ bold: <strong /> }}
           default="You are permanently deleting the {{entity}} <bold>{{what}}</bold>. This can't be undone."
           i18nKey="alerts.delete.message"
-          values={{ entity: entityName.toLocaleLowerCase(), what: title }}
+          values={{ entity: entityName.toLocaleLowerCase(), what: contactName }}
         />
       }
       onClose={onClose}
-      onSubmit={handleDeleteNote}
+      onSubmit={handleDeleteContact}
     />
   );
 };
 
-export default DeleteNoteAlert;
+export default DeleteContactAlert;

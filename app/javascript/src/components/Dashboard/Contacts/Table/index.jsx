@@ -8,17 +8,30 @@ import TableWrapper from "neetomolecules/TableWrapper";
 
 import { getColumnData } from "./utils";
 
-const Table = ({ page, rowData, setPage = noop }) => (
-  <TableWrapper>
-    <NeetoUITable
-      fixedHeight
-      columnData={getColumnData()}
-      currentPageNumber={page}
-      defaultPageSize={DEFAULT_PAGE_SIZE}
-      handlePageChange={setPage}
-      rowData={rowData}
-    />
-  </TableWrapper>
-);
+const Table = ({
+  page,
+  rowData,
+  setIsDeleteAlertOpen,
+  setSelectedContact,
+  setPage = noop,
+}) => {
+  const handleDeleteContact = contact => {
+    setSelectedContact(contact);
+    setIsDeleteAlertOpen(true);
+  };
+
+  return (
+    <TableWrapper>
+      <NeetoUITable
+        fixedHeight
+        columnData={getColumnData({ handleDeleteContact })}
+        currentPageNumber={page}
+        defaultPageSize={DEFAULT_PAGE_SIZE}
+        handlePageChange={setPage}
+        rowData={rowData}
+      />
+    </TableWrapper>
+  );
+};
 
 export default Table;
