@@ -2,7 +2,9 @@
   "titles": {
     "notes": "Notes",
     "contacts": "Contacts",
+    "changePassword": "Change Password",
     "settings": "Settings",
+    "myProfile": "My Profile",
     "nameAndRole": "Name & Role",
     "email": "Email",
     "createdAt": "Created at"
@@ -25,6 +27,7 @@
   "actions": {
     "addNew": "Add new {{what}}",
     "clear": "Clear",
+    "logout": "Logout",
     "saveChanges": "Save Changes",
     "cancel": "Cancel",
     "delete": "Delete"
@@ -44,5 +47,8 @@
       "title": "Delete {{what}}?",
       "message": "You are permanently deleting the {{entity}} <strong>{{what}}</strong>. This can't be undone."
     }
+  },
+  "placeholders": {
+    "search": "Search {{what}}"
   }
 }

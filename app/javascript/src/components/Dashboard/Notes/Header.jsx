@@ -9,7 +9,6 @@ import { withT } from "neetocommons/react-utils";
 
 const Header = withT(({ t, searchProps, onClickAddNote }) => (
   <NeetoUIHeader
-    searchProps={searchProps}
     title={t("titles.notes")}
     actionBlock={
       <Button
@@ -20,6 +19,12 @@ const Header = withT(({ t, searchProps, onClickAddNote }) => (
         onClick={onClickAddNote}
       />
     }
+    searchProps={{
+      ...searchProps,
+      placeholder: t("placeholders.search", {
+        what: t("titles.notes").toLocaleLowerCase(),
+      }),
+    }}
   />
 ));
 
