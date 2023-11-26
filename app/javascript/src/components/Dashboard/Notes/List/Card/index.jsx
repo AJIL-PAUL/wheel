@@ -9,10 +9,7 @@ const Card = ({ note, handleDeleteNote }) => {
 
   return (
     <div className="neeto-ui-border-gray-300 neeto-ui-shadow-xs border p-4">
-      <CardHeader
-        handleDeleteNote={() => handleDeleteNote(note)}
-        title={title}
-      />
+      <CardHeader title={title} onClickDelete={() => handleDeleteNote(note)} />
       <CardBody description={description} />
       <CardFooter
         assignedContact={assignedContact}
