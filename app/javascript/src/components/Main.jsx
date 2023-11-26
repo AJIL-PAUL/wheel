@@ -10,14 +10,10 @@ import { setAuthHeaders, registerIntercepts } from "apis/axios";
 import { initializeLogger } from "common/logger";
 import PrivateRoute from "components/commons/PrivateRoute";
 import Hero from "components/Hero";
-import {
-  AUTH_ROUTES,
-  PRIVATE_ROUTES,
-  DASHBOARD_PATH,
-  LOGIN_PATH,
-} from "components/routeConstants";
+import { AUTH_ROUTES, PRIVATE_ROUTES } from "components/routeConstants";
 import { useAuthState, useAuthDispatch } from "contexts/auth";
 import { useUserDispatch, useUserState } from "contexts/user";
+import routes from "routes";
 import {
   clearLocalStorageCredentials,
   getFromLocalStorage,
@@ -68,14 +64,14 @@ const Main = props => {
             path={route.path}
           />
         ))}
-        {!isLoggedIn && <Route exact component={Hero} path={DASHBOARD_PATH} />}
+        {!isLoggedIn && <Route exact component={Hero} path={routes.home} />}
         {PRIVATE_ROUTES.map(route => (
           <PrivateRoute
             component={route.component}
             condition={isLoggedIn}
             key={route.path}
             path={route.path}
-            redirectRoute={LOGIN_PATH}
+            redirectRoute={routes.auth.login}
           />
         ))}
       </Switch>

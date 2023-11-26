@@ -20,6 +20,7 @@ module.exports = {
     neetocist: "@bigbinary/neeto-cist",
     utils: absolutePath("src/utils"),
     hooks: absolutePath("src/hooks"),
+    routes: absolutePath("src/routes"),
   },
   extensions: [
     ".ts",

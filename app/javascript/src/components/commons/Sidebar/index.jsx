@@ -4,13 +4,9 @@ import { Sidebar as NeetoUISidebar } from "neetoui/layouts";
 import { useHistory } from "react-router-dom";
 
 import authenticationApi from "apis/authentication";
-import {
-  PROFILE_PATH,
-  CHANGE_PASSWORD_PATH,
-  LOGIN_PATH,
-} from "components/routeConstants";
 import { useAuthDispatch } from "contexts/auth";
 import { useUserState } from "contexts/user";
+import routes from "routes";
 
 import { APP_NAME, SIDENAV_LINKS } from "./constants";
 
@@ -23,7 +19,7 @@ const Sidebar = () => {
     try {
       await authenticationApi.logout();
       authDispatch({ type: "LOGOUT" });
-      window.location.href = LOGIN_PATH;
+      window.location.href = routes.auth.login;
     } catch (error) {
       logger.error(error);
     }
@@ -32,11 +28,12 @@ const Sidebar = () => {
   const bottomLinks = [
     {
       label: "My profile",
-      onClick: () => history.push(PROFILE_PATH, { resetTab: true }),
+      onClick: () => history.push(routes.profile, { resetTab: true }),
     },
     {
       label: "Change password",
-      onClick: () => history.push(CHANGE_PASSWORD_PATH, { resetTab: true }),
+      onClick: () =>
+        history.push(routes.settings.changePassword, { resetTab: true }),
     },
     {
       label: "Logout",

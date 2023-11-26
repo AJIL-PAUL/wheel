@@ -15,3 +15,5 @@ export const FEATURE_LIST = [
 export const SINGULAR = { count: 1 };
 
 export const PLURAL = { count: 2 };
+
+export const DEFAULT_PAGE_SIZE = 15;

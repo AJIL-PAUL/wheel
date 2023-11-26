@@ -10,12 +10,12 @@ import { withT } from "neetocommons/react-utils";
 const Header = withT(({ t, searchProps, setIsCreateNotePaneOpen }) => (
   <NeetoUIHeader
     searchProps={searchProps}
-    title={t("titles.notes")}
+    title={t("titles.contacts")}
     actionBlock={
       <Button
         icon={Plus}
         label={t("actions.addNew", {
-          what: t("labels.note", SINGULAR).toLocaleLowerCase(),
+          what: t("labels.contact", SINGULAR).toLocaleLowerCase(),
         })}
         onClick={() => setIsCreateNotePaneOpen(true)}
       />

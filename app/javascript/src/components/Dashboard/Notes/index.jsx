@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 
-import EmptyNotesListImage from "images/EmptyNotesList";
 import { isNotEmpty } from "neetocist";
 import { Container } from "neetoui/layouts";
 import { filter } from "ramda";
-import { useTranslation } from "react-i18next";
 
-import EmptyState from "components/commons/EmptyState";
-import { SINGULAR } from "components/constants";
+import NoData from "components/commons/NoData";
 import { useSearchTerm } from "hooks/useSearchTerm";
 
 import { INITIAL_NOTE_LIST } from "./constants";
@@ -17,8 +14,6 @@ import NoteList from "./List";
 import CreateNotePane from "./Pane/Create";
 
 const Notes = () => {
-  const { t } = useTranslation();
-
   const [isCreateNotePaneOpen, setIsCreateNotePaneOpen] = useState(false);
   const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false);
   const [selectedNote, setSelectedNote] = useState({});
@@ -53,14 +48,9 @@ const Notes = () => {
           notes={filteredNotes}
         />
       ) : (
-        <EmptyState
-          image={<EmptyNotesListImage />}
-          primaryAction={() => setIsCreateNotePaneOpen(true)}
-          subtitle={t("messages.addYourNotes")}
-          title={t("messages.emptyNotes")}
-          primaryActionLabel={t("actions.addNew", {
-            what: t("labels.notes", SINGULAR).toLocaleLowerCase(),
-          })}
+        <NoData
+          entityTranslationKey="labels.note"
+          onClick={() => setIsCreateNotePaneOpen(true)}
         />
       )}
       <CreateNotePane

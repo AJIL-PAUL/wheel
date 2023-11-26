@@ -4,7 +4,7 @@ import { Form, Formik } from "formik";
 import { Button } from "neetoui";
 import { Input } from "neetoui/formik";
 
-import { LOGIN_PATH, SIGNUP_PATH } from "components/routeConstants";
+import routes from "routes";
 
 import {
   RESET_PASSWORD_FORM_INITIAL_VALUES,
@@ -43,14 +43,24 @@ const ResetPassword = () => (
                 size="small"
                 type="submit"
               />
-              <Button label="Back" size="small" style="link" to={LOGIN_PATH} />
+              <Button
+                label="Back"
+                size="small"
+                style="link"
+                to={routes.auth.login}
+              />
             </div>
           </Form>
         )}
       </Formik>
       <div className="mt-4 flex flex-row items-center justify-start space-x-1">
         <p className="neeto-ui-text-gray-600 font-normal">{`Don't have an account?`}</p>
-        <Button label="Signup" size="small" style="link" to={SIGNUP_PATH} />
+        <Button
+          label="Signup"
+          size="small"
+          style="link"
+          to={routes.auth.signup}
+        />
       </div>
     </div>
   </div>

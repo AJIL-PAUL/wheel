@@ -17,7 +17,7 @@ const CreateNotePane = ({ isOpen, onClose = noop, setNotes }) => {
     const payload = { id: uuid(), createdAt: new Date(), ...values };
     setNotes(prevNotes => [payload, ...prevNotes]);
     Toastr.success(
-      t("messages.addedSuccessfully", { what: t("labels.notes", SINGULAR) })
+      t("messages.addedSuccessfully", { what: t("labels.note", SINGULAR) })
     );
     onClose();
   };
@@ -27,7 +27,7 @@ const CreateNotePane = ({ isOpen, onClose = noop, setNotes }) => {
       <Pane.Header>
         <Typography style="h2" weight="semibold">
           {t("actions.addNew", {
-            what: t("labels.notes", SINGULAR).toLocaleLowerCase(),
+            what: t("labels.note", SINGULAR).toLocaleLowerCase(),
           })}
         </Typography>
       </Pane.Header>
