@@ -7,7 +7,7 @@ import { dateFormat } from "neetocommons/utils";
 import NameAndRole from "./NameAndRole";
 import RowAction from "./RowAction";
 
-export const getColumnData = ({ handleDeleteContact }) => [
+export const buildColumnData = ({ handleDeleteContact }) => [
   {
     dataIndex: "name",
     render: (_, contact) => <NameAndRole contact={contact} />,
@@ -22,11 +22,12 @@ export const getColumnData = ({ handleDeleteContact }) => [
   {
     dataIndex: "actions",
     render: (_, contact) => (
-      <RowAction
-        contact={contact}
-        onClickDelete={() => handleDeleteContact(contact)}
-      />
+      <RowAction onClickDelete={() => handleDeleteContact(contact)} />
     ),
     width: 70,
   },
+];
+
+export const buildDropdownMenuItems = ({ onClickDelete }) => [
+  { key: 1, label: t("actions.delete"), onClick: onClickDelete },
 ];

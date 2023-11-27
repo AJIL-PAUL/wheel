@@ -1,13 +1,14 @@
 import React from "react";
 
-import { withT } from "neetocommons/react-utils";
 import MoreDropdown from "neetomolecules/MoreDropdown";
 
-const RowAction = withT(({ t, onClickDelete }) => (
+import { buildDropdownMenuItems } from "./utils";
+
+const RowAction = ({ onClickDelete }) => (
   <MoreDropdown
     dropdownProps={{ strategy: "fixed" }}
-    menuItems={[{ key: 1, label: t("actions.delete"), onClick: onClickDelete }]}
+    menuItems={buildDropdownMenuItems({ onClickDelete })}
   />
-));
+);
 
 export default RowAction;

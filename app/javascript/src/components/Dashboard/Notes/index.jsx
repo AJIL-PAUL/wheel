@@ -8,10 +8,10 @@ import NoData from "components/commons/NoData";
 import { useSearchTerm } from "hooks/useSearchTerm";
 
 import { INITIAL_NOTE_LIST } from "./constants";
-import DeleteNoteAlert from "./Delete";
+import DeleteAlert from "./Delete";
 import Header from "./Header";
-import NoteList from "./List";
-import CreateNotePane from "./Pane/Create";
+import List from "./List";
+import CreatePane from "./Pane/Create";
 
 const Notes = () => {
   const [isCreateNotePaneOpen, setIsCreateNotePaneOpen] = useState(false);
@@ -42,19 +42,19 @@ const Notes = () => {
     <Container isHeaderFixed>
       <Header searchProps={searchProps} onClickAddNote={handleAddNote} />
       {isNotEmpty(filteredNotes) ? (
-        <NoteList handleDeleteNote={handleDeleteNote} notes={filteredNotes} />
+        <List handleDeleteNote={handleDeleteNote} notes={filteredNotes} />
       ) : (
         <NoData
           entityTranslationKey="labels.note"
           onClickPrimaryButton={handleAddNote}
         />
       )}
-      <CreateNotePane
+      <CreatePane
         isOpen={isCreateNotePaneOpen}
         setNotes={setNotes}
         onClose={() => setIsCreateNotePaneOpen(false)}
       />
-      <DeleteNoteAlert
+      <DeleteAlert
         isOpen={isDeleteAlertOpen}
         selectedNote={selectedNote}
         setNotes={setNotes}

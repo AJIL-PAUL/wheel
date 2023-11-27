@@ -10,13 +10,13 @@ import { VALIDATION_SCHEMA } from "./constants";
 
 import { ROLES } from "../constants";
 
-const Form = ({ initialValues, handleSubmit, onCancel }) => {
+const Form = ({ initialValues, onSubmit, onCancel }) => {
   const { t } = useTranslation();
 
-  const handleFormSubmit = async values => {
+  const handleSubmit = async values => {
     const { role, ...rest } = values;
     const payload = { ...rest, role: { id: role.value, name: role.label } };
-    handleSubmit(payload);
+    onSubmit(payload);
   };
 
   const roleOptions = modifyKeys({ id: "value", name: "label" }, ROLES);
@@ -26,7 +26,7 @@ const Form = ({ initialValues, handleSubmit, onCancel }) => {
       initialValues={initialValues}
       validationSchema={VALIDATION_SCHEMA}
       onReset={onCancel}
-      onSubmit={handleFormSubmit}
+      onSubmit={handleSubmit}
     >
       {({ isSubmitting }) => (
         <FormikForm className="w-full">

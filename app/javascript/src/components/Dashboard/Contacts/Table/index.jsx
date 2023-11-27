@@ -6,7 +6,7 @@ import { DEFAULT_PAGE_SIZE } from "src/constants";
 
 import TableWrapper from "neetomolecules/TableWrapper";
 
-import { getColumnData } from "./utils";
+import { buildColumnData } from "./utils";
 
 const Table = ({
   page,
@@ -24,7 +24,7 @@ const Table = ({
     <TableWrapper>
       <NeetoUITable
         fixedHeight
-        columnData={getColumnData({ handleDeleteContact })}
+        columnData={buildColumnData({ handleDeleteContact })}
         currentPageNumber={page}
         defaultPageSize={DEFAULT_PAGE_SIZE}
         handlePageChange={setPage}

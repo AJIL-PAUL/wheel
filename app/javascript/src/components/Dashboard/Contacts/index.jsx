@@ -8,10 +8,10 @@ import NoData from "components/commons/NoData";
 import { useSearchTerm } from "hooks/useSearchTerm";
 
 import { INITIAL_CONTACT_LIST } from "./constants";
-import DeleteContactAlert from "./Delete";
+import DeleteAlert from "./Delete";
 import Header from "./Header";
-import CreateContactPane from "./Pane/Create";
-import ContactsTable from "./Table";
+import CreatePane from "./Pane/Create";
+import Table from "./Table";
 
 const Contacts = () => {
   const [isCreateContactPaneOpen, setIsCreateContactPaneOpen] = useState(false);
@@ -37,7 +37,7 @@ const Contacts = () => {
     <Container>
       <Header searchProps={searchProps} onClickAddContact={handleAddContact} />
       {isNotEmpty(filteredContacts) ? (
-        <ContactsTable
+        <Table
           page={page}
           rowData={filteredContacts}
           setIsDeleteAlertOpen={setIsDeleteAlertOpen}
@@ -50,12 +50,12 @@ const Contacts = () => {
           onClickPrimaryButton={handleAddContact}
         />
       )}
-      <CreateContactPane
+      <CreatePane
         isOpen={isCreateContactPaneOpen}
         setContacts={setContacts}
         onClose={() => setIsCreateContactPaneOpen(false)}
       />
-      <DeleteContactAlert
+      <DeleteAlert
         isOpen={isDeleteAlertOpen}
         selectedContact={selectedContact}
         setContacts={setContacts}
