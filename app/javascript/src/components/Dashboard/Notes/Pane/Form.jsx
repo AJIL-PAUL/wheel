@@ -40,17 +40,30 @@ const Form = ({ initialValues, handleSubmit, onCancel }) => {
         <FormikForm className="w-full">
           <Pane.Body>
             <div className="w-full space-y-6">
-              <Input required label={t("labels.title")} name="title" />
+              <Input
+                required
+                label={t("labels.title")}
+                name="title"
+                placeholder={t("placeholders.enter", {
+                  what: t("labels.title").toLocaleLowerCase(),
+                })}
+              />
               <Textarea
                 required
                 label={t("labels.description")}
                 name="description"
+                placeholder={t("placeholders.enter", {
+                  what: t("labels.noteDescription"),
+                })}
               />
               <Select
                 required
                 label={t("labels.assignedContact")}
                 name="assignedContact"
                 options={contactOptions}
+                placeholder={t("placeholders.select", {
+                  what: t("labels.contact"),
+                })}
               />
               <Select
                 isMulti
@@ -58,6 +71,9 @@ const Form = ({ initialValues, handleSubmit, onCancel }) => {
                 label={t("labels.tags")}
                 name="tags"
                 options={tagOptions}
+                placeholder={t("placeholders.select", {
+                  what: t("labels.tags"),
+                })}
               />
             </div>
           </Pane.Body>

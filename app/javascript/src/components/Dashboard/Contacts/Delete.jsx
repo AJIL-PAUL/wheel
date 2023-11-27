@@ -15,11 +15,11 @@ const DeleteContactAlert = ({
   const contactName = `${firstName} ${lastName}`;
   const { t } = useTranslation();
 
-  const entityName = t("labels.contact", SINGULAR);
+  const contactLabel = t("labels.contact", SINGULAR);
 
   const handleDeleteContact = () => {
     setContacts(prevContacts => removeById(selectedContact.id, prevContacts));
-    Toastr.success(t("messages.deletedSuccessfully", { what: entityName }));
+    Toastr.success(t("messages.deletedSuccessfully", { what: contactLabel }));
     onClose();
   };
 
@@ -27,15 +27,20 @@ const DeleteContactAlert = ({
     <Alert
       isOpen={isOpen}
       submitButtonLabel={t("actions.delete")}
-      title={t("alerts.delete.title", { what: entityName.toLocaleLowerCase() })}
       message={
         <Trans
           components={{ bold: <strong /> }}
           default="You are permanently deleting the {{entity}} <bold>{{what}}</bold>. This can't be undone."
           i18nKey="alerts.delete.message"
-          values={{ entity: entityName.toLocaleLowerCase(), what: contactName }}
+          values={{
+            entity: contactLabel.toLocaleLowerCase(),
+            what: contactName,
+          }}
         />
       }
+      title={t("alerts.delete.title", {
+        what: contactLabel.toLocaleLowerCase(),
+      })}
       onClose={onClose}
       onSubmit={handleDeleteContact}
     />

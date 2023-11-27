@@ -37,15 +37,35 @@ const Form = ({ initialValues, onSubmit, onCancel }) => {
                   required
                   label={t("labels.firstName")}
                   name="firstName"
+                  placeholder={t("placeholders.enter", {
+                    what: t("labels.firstName").toLocaleLowerCase(),
+                  })}
                 />
-                <Input required label={t("labels.lastName")} name="lastName" />
+                <Input
+                  required
+                  label={t("labels.lastName")}
+                  name="lastName"
+                  placeholder={t("placeholders.enter", {
+                    what: t("labels.lastName").toLocaleLowerCase(),
+                  })}
+                />
               </div>
-              <Input required label={t("labels.email")} name="email" />
+              <Input
+                required
+                label={t("labels.email")}
+                name="email"
+                placeholder={t("placeholders.enter", {
+                  what: t("labels.email").toLocaleLowerCase(),
+                })}
+              />
               <Select
                 required
                 label={t("labels.role")}
                 name="role"
                 options={roleOptions}
+                placeholder={t("placeholders.select", {
+                  what: t("labels.role").toLocaleLowerCase(),
+                })}
               />
             </div>
           </Pane.Body>

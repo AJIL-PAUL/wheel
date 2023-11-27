@@ -6,7 +6,7 @@ export const INITIAL_FORM_VALUES = {
   firstName: "",
   lastName: "",
   email: "",
-  role: "",
+  role: null,
 };
 
 export const VALIDATION_SCHEMA = yup.object().shape({
@@ -30,5 +30,7 @@ export const VALIDATION_SCHEMA = yup.object().shape({
     ),
   role: yup
     .object()
+    .nullable()
+    .shape({ label: yup.string(), value: yup.string() })
     .required(t("validations.required", { what: t("labels.role") })),
 });
