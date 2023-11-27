@@ -40,7 +40,8 @@
   "validations": {
     "required": "{{what}} is required.",
     "atLeastOne": "At least one {{what}} is required.",
-    "invalid": "{{what}} is invalid."
+    "invalid": "{{what}} is invalid.",
+    "alphanumeric": "At least one alphanumeric character is required."
   },
   "alerts": {
     "delete": {

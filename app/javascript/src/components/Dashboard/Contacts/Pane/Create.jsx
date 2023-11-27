@@ -9,7 +9,7 @@ import { v4 as uuid } from "uuid";
 import { INITIAL_FORM_VALUES } from "./constants";
 import Form from "./Form";
 
-const CreateContactPane = ({ isOpen, onClose = noop, setContacts = noop }) => {
+const Create = ({ isOpen, onClose = noop, setContacts = noop }) => {
   const { t } = useTranslation();
 
   const addContact = values => {
@@ -31,12 +31,12 @@ const CreateContactPane = ({ isOpen, onClose = noop, setContacts = noop }) => {
         </Typography>
       </Pane.Header>
       <Form
-        handleSubmit={addContact}
         initialValues={INITIAL_FORM_VALUES}
         onCancel={onClose}
+        onSubmit={addContact}
       />
     </Pane>
   );
 };
 
-export default CreateContactPane;
+export default Create;

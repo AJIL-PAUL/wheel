@@ -5,7 +5,7 @@ import { Avatar, Tag, Typography } from "neetoui";
 
 import DateFormat from "neetomolecules/DateFormat";
 
-const CardFooter = ({ status, tags = [], updatedAt, assignedContact }) => (
+const Footer = ({ status, tags = [], updatedAt, assignedContact }) => (
   <div className="neeto-ui-border-gray-300 mt-3 flex w-full justify-between border-t pt-3">
     <div className="flex items-center gap-x-2">
       {tags.map(({ id, label }) => (
@@ -26,4 +26,4 @@ const CardFooter = ({ status, tags = [], updatedAt, assignedContact }) => (
   </div>
 );
 
-export default CardFooter;
+export default Footer;
