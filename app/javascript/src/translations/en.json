@@ -22,7 +22,9 @@
     "description": "Description",
     "assignedContact": "Assigned contact",
     "tags": "Tags",
-    "tag": "Tag"
+    "tag": "Tag",
+    "contact": "contact",
+    "noteDescription": "note description"
   },
   "actions": {
     "addNew": "Add new {{what}}",
@@ -50,6 +52,8 @@
     }
   },
   "placeholders": {
-    "search": "Search {{what}}"
+    "search": "Search {{what}}",
+    "enter": "Enter {{what}}",
+    "select": "Select {{what}}"
   }
 }

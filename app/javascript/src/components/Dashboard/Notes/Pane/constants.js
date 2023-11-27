@@ -5,7 +5,7 @@ export const INITIAL_FORM_VALUES = {
   title: "",
   description: "",
   tags: [],
-  assignedContact: "",
+  assignedContact: null,
 };
 
 export const VALIDATION_SCHEMA = yup.object().shape({
@@ -19,12 +19,17 @@ export const VALIDATION_SCHEMA = yup.object().shape({
     .required(t("validations.required", { what: t("labels.description") })),
   assignedContact: yup
     .object()
+    .nullable()
+    .shape({ label: yup.string(), value: yup.string() })
     .required(t("validations.required", { what: t("labels.assignedContact") })),
-  tags: yup.array().min(
-    1,
-    t("validations.atLeastOne", {
-      what: t("labels.tag").toLocaleLowerCase(),
-      min: 1,
-    })
-  ),
+  tags: yup
+    .array()
+    .of(yup.object().shape({ label: yup.string(), value: yup.string() }))
+    .min(
+      1,
+      t("validations.atLeastOne", {
+        what: t("labels.tag").toLocaleLowerCase(),
+        min: 1,
+      })
+    ),
 });

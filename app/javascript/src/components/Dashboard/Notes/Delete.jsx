@@ -9,11 +9,11 @@ const DeleteNoteAlert = ({ isOpen, selectedNote, onClose, setNotes }) => {
   const { title } = selectedNote;
   const { t } = useTranslation();
 
-  const entityName = t("labels.note", SINGULAR);
+  const noteLabel = t("labels.note", SINGULAR);
 
   const handleDeleteNote = () => {
     setNotes(prevNotes => removeById(selectedNote.id, prevNotes));
-    Toastr.success(t("messages.deletedSuccessfully", { what: entityName }));
+    Toastr.success(t("messages.deletedSuccessfully", { what: noteLabel }));
     onClose();
   };
 
@@ -21,13 +21,13 @@ const DeleteNoteAlert = ({ isOpen, selectedNote, onClose, setNotes }) => {
     <Alert
       isOpen={isOpen}
       submitButtonLabel={t("actions.delete")}
-      title={t("alerts.delete.title", { what: entityName.toLocaleLowerCase() })}
+      title={t("alerts.delete.title", { what: noteLabel.toLocaleLowerCase() })}
       message={
         <Trans
           components={{ bold: <strong /> }}
           default="You are permanently deleting the {{entity}} <bold>{{what}}</bold>. This can't be undone."
           i18nKey="alerts.delete.message"
-          values={{ entity: entityName.toLocaleLowerCase(), what: title }}
+          values={{ entity: noteLabel.toLocaleLowerCase(), what: title }}
         />
       }
       onClose={onClose}
